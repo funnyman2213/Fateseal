@@ -1,3 +1,3 @@
-from . import bulkdata, cards, catalog, rulings, sets, symbols
+from fateseal.request import bulkdata, cards, catalog, rulings, sets, symbols
 
  

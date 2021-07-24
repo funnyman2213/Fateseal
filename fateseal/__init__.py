@@ -19,5 +19,4 @@ __all__ = [
     'Ruling',
     'CardSet',
     'CardSymbol',
-    'RandomCard',
 ]
