@@ -11,5 +11,5 @@ setup(
     author_email='bakerjobaker.baker30@gmail.com',
     license='MIT',
     keywords=['Scryfall', 'magic', 'the gathering', 'fateseal', 'wrapper'],
-    install_requires=['aiohttp','requests','asyncoi','pydantic']
+    install_requires=['aiohttp','requests','asyncio','pydantic']
 )
