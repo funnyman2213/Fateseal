@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='fateseal',
-    packages=['fateseal', 'fateseal.request'],
+    packages=['fateseal', 'fateseal.request', 'fateseal.models'],
     version='1.0.0',
     description="A wrapper for using the Scryfall API",
     url='https://github.com/funnyman2213/Fateseal',
