@@ -7,7 +7,7 @@ from fateseal.models.catalog import Catalog
 from fateseal.models.bulkdata import BulkData
 from fateseal.models.card import Card
 from fateseal.models.abc import ScryfallObject
-from typing import Dict, List, Optional, Tuple, Any, Union
+from typing import Coroutine, Dict, List, Optional, Tuple, Any, Union
 
 import requests
 import aiohttp
@@ -39,7 +39,7 @@ class RequestType:
         r = requests.get(self.base_uri + self.endpoint, params=self.params)
         return self._interpret(r.json()["object"]).parse_raw(r.text)
 
-    async def async_get(self) -> Union[_return_type, Error]:
+    async def async_get(self) -> Coroutine[None, None, Union[_return_type, Error]]:
         async with aiohttp.ClientSession() as session:
             async with session.get(self.base_uri + self.endpoint, params=self.params) as response:   
                 responseJson = await response.json()
