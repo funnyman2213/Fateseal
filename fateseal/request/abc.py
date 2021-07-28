@@ -13,7 +13,7 @@ import requests
 import aiohttp
 
 class RequestType:
-    base_uri = "https://api.scryfall.com"
+    _base_uri = "https://api.scryfall.com"
     endpoint: str
     params: Optional[Dict[str, str]] = None
     _return_type: type = ScryfallObject
@@ -36,12 +36,12 @@ class RequestType:
             return objects[object]
 
     def get(self) -> Union[_return_type, Error]:
-        r = requests.get(self.base_uri + self.endpoint, params=self.params)
+        r = requests.get(self._base_uri + self.endpoint, params=self.params)
         return self._interpret(r.json()["object"]).parse_raw(r.text)
 
     async def async_get(self) -> Coroutine[None, None, Union[_return_type, Error]]:
         async with aiohttp.ClientSession() as session:
-            async with session.get(self.base_uri + self.endpoint, params=self.params) as response:   
+            async with session.get(self._base_uri + self.endpoint, params=self.params) as response:   
                 responseJson = await response.json()
                 objectType = self._interpret(responseJson['object'])
                 return objectType.parse_raw(await response.text())
