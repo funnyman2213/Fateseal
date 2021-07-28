@@ -1,23 +1,22 @@
-from fateseal.symbol import CardSymbol
-from fateseal.set import CardSet
-from fateseal.ruling import Ruling
-from fateseal.objlist import ObjList
-from fateseal.error import Error
-from fateseal.catalog import Catalog
-from fateseal.bulkdata import BulkData
-from fateseal.card import Card
-from typing import Dict, List, Optional, Tuple, Any
-from fateseal.abc import ScryfallObject
-
-from abc import ABC
+from fateseal.models.symbol import CardSymbol
+from fateseal.models.set import CardSet
+from fateseal.models.ruling import Ruling
+from fateseal.models.objlist import ObjList
+from fateseal.models.error import Error
+from fateseal.models.catalog import Catalog
+from fateseal.models.bulkdata import BulkData
+from fateseal.models.card import Card
+from fateseal.models.abc import ScryfallObject
+from typing import Dict, List, Optional, Tuple, Any, Union
 
 import requests
 import aiohttp
 
-class RequestType(ABC):
+class RequestType:
     base_uri = "https://api.scryfall.com"
     endpoint: str
     params: Optional[Dict[str, str]] = None
+    _return_type: type = ScryfallObject
 
     def _set_paramaters(self, params:List[Tuple[str, Any]] ) -> None:
         self.params = {key:str(value) for (key, value) in params if value is not None}
@@ -36,11 +35,11 @@ class RequestType(ABC):
         if object in objects:
             return objects[object]
 
-    def get(self) -> ScryfallObject:
+    def get(self) -> Union[_return_type, Error]:
         r = requests.get(self.base_uri + self.endpoint, params=self.params)
         return self._interpret(r.json()["object"]).parse_raw(r.text)
 
-    async def async_get(self) -> ScryfallObject:
+    async def async_get(self) -> Union[_return_type, Error]:
         async with aiohttp.ClientSession() as session:
             async with session.get(self.base_uri + self.endpoint, params=self.params) as response:   
                 responseJson = await response.json()

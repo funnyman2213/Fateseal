@@ -1,4 +1,4 @@
-from fateseal.abc import ScryfallObject
+from fateseal.models.abc import ScryfallObject
 from typing import List, Optional
 
 class Error(ScryfallObject):

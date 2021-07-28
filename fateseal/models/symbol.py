@@ -1,5 +1,5 @@
-from fateseal.abc import ScryfallObject
-from fateseal.card import MANACOLOR
+from fateseal.models.abc import ScryfallObject
+from fateseal.models.card import MANACOLOR
 from typing import List, Optional
 
 class CardSymbol(ScryfallObject):

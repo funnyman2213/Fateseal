@@ -1,4 +1,4 @@
-from fateseal.abc import ScryfallObject
+from fateseal.models.abc import ScryfallObject
 from pydantic import BaseModel
 from uuid import UUID
 from typing import Literal, Optional, List

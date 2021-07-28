@@ -1,9 +1,18 @@
+from fateseal.models.error import Error
+from fateseal.models.objlist import ObjList
+from fateseal.models.ruling import Ruling
+from typing import Union
 from uuid import UUID
 from .abc import RequestType
 
-# TODO: FIX THIS FILE. THIS IS BAD IMPLIMENTATION
-# MUTATES CARD REQUESTS TO APPEND /RULINGS
+class RulingsRequest(RequestType):
+    _return_type: type = ObjList[Ruling]
 
+    def get(self) -> Union[_return_type, Error]:
+        return super().get()
+
+    async def async_get(self) -> Union[_return_type, Error]:
+        return await super().async_get()
 class Multiverse(RequestType):
     """Returns a List of Rulings for a Card of Multiverse ID"""
     def __init__(self, id:int) -> None:

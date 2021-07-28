@@ -1,6 +1,6 @@
-from fateseal.card import MANACOLOR
+from fateseal.models.card import MANACOLOR
+from fateseal.models.abc import ScryfallObject
 from typing import List
-from fateseal.abc import ScryfallObject
 
 class ManaCost(ScryfallObject):
     cost: str

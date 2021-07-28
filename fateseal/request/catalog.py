@@ -1,81 +1,93 @@
+from fateseal.models.error import Error
+from fateseal.models.catalog import Catalog
+from typing import Union
 from .abc import RequestType
 
-class CardNames(RequestType):
+class CatalogRequest(RequestType):
+    _return_type: type = Catalog
+
+    def get(self) -> Union[_return_type, Error]:
+        return super().get()
+    
+    async def async_get(self) -> Union[_return_type, Error]:
+        return await super().async_get()
+
+class CardNames(CatalogRequest):
     """Returns a Catalog of all card names"""
     def __init__(self) -> None:
         self.endpoint = "/catalog/card-names"
 
-class ArtistNames(RequestType):
+class ArtistNames(CatalogRequest):
     """Returns a Catalog of all artist names"""
     def __init__(self) -> None:
         self.endpoint = "/catalog/artist-names"
 
-class WordBank(RequestType):
+class WordBank(CatalogRequest):
     """Returns a Catalog of the word bank """
     def __init__(self) -> None:
         self.endpoint = "/catalog/word-bank"
 
-class CreatureTypes(RequestType):
+class CreatureTypes(CatalogRequest):
     """Returns a Catalog of all creature types"""
     def __init__(self) -> None:
         self.endpoint = "/catalog/creature-types"
 
-class PlaneswalkerTypes(RequestType):
+class PlaneswalkerTypes(CatalogRequest):
     """Returns a Catalog of all planeswalker types"""
     def __init__(self) -> None:
         self.endpoint = "/catalog/planeswalker-types"
 
-class LandTypes(RequestType):
+class LandTypes(CatalogRequest):
     """Returns a Catalog of all land types"""
     def __init__(self) -> None:
         self.endpoint = "/catalog/land-types"
 
-class ArtifactTypes(RequestType):
+class ArtifactTypes(CatalogRequest):
     """Returns a Catalog of all artifact types"""
     def __init__(self) -> None:
         self.endpoint = "/catalog/artifact-types"
 
-class EnchantmentTypes(RequestType):
+class EnchantmentTypes(CatalogRequest):
     """Returns a Catalog of all enchantment types"""
     def __init__(self) -> None:
         self.endpoint = "/catalog/enchantment-types"
 
-class SpellTypes(RequestType):
+class SpellTypes(CatalogRequest):
     """Returns a Catalog of all spell types"""
     def __init__(self) -> None:
         self.endpoint = "/catalog/spell-types"
 
-class Powers(RequestType):
+class Powers(CatalogRequest):
     """Returns a Catalog of all valid powers"""
     def __init__(self) -> None:
         self.endpoint = "/catalog/powers"
 
-class Toughnesses(RequestType):
+class Toughnesses(CatalogRequest):
     """Returns a Catalog of all valid toughnesses"""
     def __init__(self) -> None:
         self.endpoint = "/catalog/toughnesses"
 
-class Loyalties(RequestType):
+class Loyalties(CatalogRequest):
     """Returns a Catalog of all loyalties"""
     def __init__(self) -> None:
         self.endpoint = "/catalog/loyalties"
 
-class Watermarks(RequestType):
+class Watermarks(CatalogRequest):
     """Returns a Catalog of all watermarks"""
     def __init__(self) -> None:
         self.endpoint = "/catalog/watermarks"
 
-class KeywordAbilities(RequestType):
+class KeywordAbilities(CatalogRequest):
     """Returns a Catalog of all keyword abilities"""
     def __init__(self) -> None:
         self.endpoint = "/catalog/keyword-abilities"
 
-class KeywordActions(RequestType):
+class KeywordActions(CatalogRequest):
     """Returns a Catalog of all keyword actions"""
     def __init__(self) -> None:
         self.endpoint = "/catalog/keyword-actions"
 
-class AbilityWords(RequestType):
+class AbilityWords(CatalogRequest):
     """Returns a Catalog of all ability words"""
     def __init__(self) -> None:
         self.endpoint = "/catalog/ability-words"

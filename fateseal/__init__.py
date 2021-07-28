@@ -1,22 +1,3 @@
-from fateseal.bulkdata import BulkData
-from fateseal.card import Card
-from fateseal.catalog import Catalog
-from fateseal.error import Error
-from fateseal.objlist import ObjList
-from fateseal.ruling import Ruling
-from fateseal.set import CardSet
-from fateseal.symbol import CardSymbol
+from fateseal import models, request
 
-from fateseal import request
-
-__all__ = [
-    'BulkData',
-    'Card',
-    'Catalog',
-    'Error',
-    'ObjList',
-    'Ruling',
-    'CardSet',
-    'CardSymbol',
-    'request'
-]
+__all__ = ['models', 'request']

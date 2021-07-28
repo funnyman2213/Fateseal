@@ -1,4 +1,4 @@
-from fateseal.abc import ScryfallObject
+from fateseal.models.abc import ScryfallObject
 from uuid import UUID
 
 class Ruling(ScryfallObject):
