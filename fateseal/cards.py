@@ -1,8 +1,8 @@
 from fateseal.models.objlist import ObjList
 from fateseal.models.card import Card
 from fateseal.models.catalog import Catalog
-from typing import Dict, List, Literal, Optional, TypeVar
-from .abc import RequestType
+from typing import Dict, List, Literal, Optional
+from fateseal.abc import RequestType
 from uuid import UUID
 
 class Search(RequestType):

@@ -1,4 +1,4 @@
-from fateseal.request.abc import RequestType
+from fateseal.abc import RequestType
 from typing import Coroutine, Generic, TypeVar, Union
 from fateseal.models.abc import ScryfallObject
 from fateseal.models.bulkdata import BulkData

@@ -1,7 +1,7 @@
 from fateseal.models.objlist import ObjList
 from fateseal.models.set import CardSet
 from uuid import UUID
-from .abc import RequestType
+from fateseal.abc import RequestType
 
 class All(RequestType):
     """Returns all Sets"""

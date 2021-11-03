@@ -1,7 +1,7 @@
 from fateseal.models.manacost import ManaCost
 from fateseal.models.objlist import ObjList
 from fateseal.models.symbol import CardSymbol
-from .abc import RequestType
+from fateseal.abc import RequestType
 
 class All(RequestType):
     """Returns all valid Symbols"""

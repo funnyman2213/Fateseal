@@ -1,5 +1,6 @@
+from fateseal.abc import RequestType
 from fateseal.models.catalog import Catalog
-from .abc import RequestType
+
 
 class CatalogRequest(RequestType):
     return_type: Catalog
