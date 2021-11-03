@@ -8,3 +8,6 @@ class Catalog(ScryfallObject):
     
     def __iter__(self) -> Iterator[str]:
         return iter(self.data)
+
+    def __getitem__(self, i) -> str:
+        return self.data[i]

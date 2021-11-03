@@ -1,16 +1,8 @@
-from fateseal.models.error import Error
 from fateseal.models.catalog import Catalog
-from typing import Union
 from .abc import RequestType
 
 class CatalogRequest(RequestType):
-    _return_type: type = Catalog
-
-    def get(self) -> Union[_return_type, Error]:
-        return super().get()
-    
-    async def async_get(self) -> Union[_return_type, Error]:
-        return await super().async_get()
+    return_type: Catalog
 
 class CardNames(CatalogRequest):
     """Returns a Catalog of all card names"""
