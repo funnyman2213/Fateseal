@@ -49,7 +49,7 @@ class Request(Generic[T]):
             raise StatusError(r.status_code, r.text)
         return self._interpret(r.json()["object"]).parse_raw(r.text)
 
-    async def async_get(self) -> Coroutine[None, None, Union[T, Error]]:
+    async def async_get(self) -> Union[T, Error]:
         async with aiohttp.ClientSession() as session:
             if self.request.method == 'GET':
                 async with session.get(self._base_uri + self.request.endpoint, params=self.request.params) as response:   
