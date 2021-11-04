@@ -21,6 +21,11 @@ smothering_t = fs.cards.Named(fuzzy="smothering t").get()
 
 All requests have a corisponding `async_get()` method implimented with `aiohttp` to perform asyncronous requests.
 
+```python
+await smothering_t = fs.cards.Named(fuzzy="smothering t").async_get()
+# returns a Card 
+```
+
 ## Models
 
 Fateseal exposes the different models and structures of data returned by Scryfall in the models sub module. Considering each request may return an error this is useful for understanding the data returned
