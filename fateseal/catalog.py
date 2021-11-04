@@ -2,8 +2,8 @@ from fateseal.abc import RequestType
 from fateseal.models.catalog import Catalog
 
 
-class CatalogRequest(RequestType):
-    return_type: Catalog
+class CatalogRequest(RequestType[Catalog]):
+    pass
 
 class CardNames(CatalogRequest):
     """Returns a Catalog of all card names"""

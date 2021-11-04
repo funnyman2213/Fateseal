@@ -3,8 +3,8 @@ from fateseal.models.ruling import Ruling
 from uuid import UUID
 from fateseal.abc import RequestType
 
-class RulingsRequest(RequestType):
-    return_type: ObjList[Ruling]
+class RulingsRequest(RequestType[ObjList[Ruling]]):
+    pass
 
 class Multiverse(RulingsRequest):
     """Returns a List of Rulings for a Card of Multiverse ID"""
