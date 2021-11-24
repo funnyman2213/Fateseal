@@ -7,6 +7,7 @@ from uuid import UUID
 
 class Search(RequestType[ObjList[Card]]):
     """Returns a List of Cards based on the Query given"""
+    return_type = ObjList[Card]
 
     def __init__(
         self, 
@@ -33,6 +34,7 @@ class Search(RequestType[ObjList[Card]]):
 
 class Named(RequestType[Card]):
     """Returns a single Card based on the input of either fuzzy or exact"""
+    return_type = Card
 
     def __init__(self, exact:Optional[str]=None, fuzzy:Optional[str]=None, set:Optional[str]=None) -> None:
         self.endpoint = "/cards/named"
@@ -46,6 +48,7 @@ class Named(RequestType[Card]):
 
 class Autocomplete(RequestType[Catalog]):
     """Returns a Catalog of up to 20 english autocompletions of the query"""
+    return_type = Catalog
 
     def __init__(self, query:str, extras:Optional[str]=None) -> None:
         self.endpoint = '/cards/autocomplete'
@@ -56,12 +59,14 @@ class Autocomplete(RequestType[Catalog]):
 
 class Random(RequestType[Card]):
     """Returns a random Card"""
+    return_type = Card
 
     def __init__(self):
         self.endpoint = "/cards/random"
 
 class Collection(RequestType[ObjList[Card]]):
     """Returns a list of cards based on the passed in identifiers"""
+    return_type = ObjList[Card]
     method: Literal["GET", "POST"] = "POST"
 
     def __init__(self, identifiers:List[Dict[str,str]]) -> None:
@@ -70,6 +75,7 @@ class Collection(RequestType[ObjList[Card]]):
 
 class BySetCode(RequestType[Card]):
     """Returns a Card of specific collector number from the set code"""
+    return_type = Card
 
     def __init__(self, code:str, number:int, lang:Optional[str]=None) -> None:
         self.endpoint = f"/cards/{code}/{number}"
@@ -78,36 +84,42 @@ class BySetCode(RequestType[Card]):
 
 class Multiverse(RequestType[Card]):
     """Returns a Card of multivers ID"""
+    return_type = Card
 
     def __init__(self, id:int) -> None:
         self.endpoint = f"/cards/multiverse/{id}"
  
 class Mtgo(RequestType[Card]):
     """Returns a Card of MTGO ID"""
+    return_type = Card
 
     def __init__(self, id:int) -> None:
         self.endpoint = f"/cards/mtgo/{id}"
 
 class Arena(RequestType[Card]):
     """Returns a Card of Arena ID"""
+    return_type = Card
 
     def __init__(self, id:int) -> None:
         self.endpoint = f"/cards/arena/{id}"
 
 class TCGPlayer(RequestType[Card]):
     """Returns a Card of TCGPlayer ID"""
+    return_type = Card
 
     def __init__(self, id:int) -> None:
         self.endpoint = f"/cards/tcgplayer/{id}"
 
 class CardMarket(RequestType[Card]):
     """Returns a Card of CardMarket ID"""
+    return_type = Card
 
     def __init__(self, id:int) -> None:
         self.endpoint = f"/cards/cardmarket/{id}"
 
 class ByID(RequestType[Card]):
     """Returns a Card of Scryfall UUID"""
+    return_type = Card
 
     def __init__(self, id:UUID) -> None:
         self.endpoint = f"/cards/{id}"

@@ -4,7 +4,7 @@ from uuid import UUID
 from fateseal.abc import RequestType
 
 class RulingsRequest(RequestType[ObjList[Ruling]]):
-    pass
+    return_type = ObjList[Ruling]
 
 class Multiverse(RulingsRequest):
     """Returns a List of Rulings for a Card of Multiverse ID"""
